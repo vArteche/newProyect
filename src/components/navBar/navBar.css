@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Playfair+Display&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+};
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+};
+.navbar-brand{
+    justify-content: space-between;
+    width: 100%;
+};
+
+#titulo{
+    font-family: 'Bungee Spice', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6.25rem;
+    
+};
+.body{
+    display: flex;
+    flex-direction: column;
+}
+.card-section{
+    width: 100%;
+    margin-top: 12.5rem;
+}
+div.card{
+    width: 6.25rem;
+    background-color: green;
+    position: absolute;
+    background-color: gray
+};
+#comprar{
+    color: white;
+    width: 9.375rem;
+    background-color: aliceblue
+};
+.card-content{
+    text-align: center;
+}
