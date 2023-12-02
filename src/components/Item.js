@@ -1,19 +1,18 @@
-import lagoNess from '../assets/img/lagoness.jpg'
 
 import ItemCount from './ItemCount/ItemCount'
-import productos from './productos';
 
-
-function Item ({item}){
+function Item ({props}){
+    const {nombre, definicion, coleccion, img} = props;
     return(
+        
         <div className="container">
         <div className="column is-4">
             <div className="card-img">
-                <img src={lagoNess} alt="mounstro del lago ness"></img>
+                <img src={img} alt="imagen producto"></img>
             </div>
             <div className="card-header-title is-centered">
                 <span>
-                    –  – 
+                 {nombre} – {definicion} – {coleccion}
                 </span>
             </div>
             <div className="card-content">

@@ -5,17 +5,18 @@ import'./itemCount.css';
 function AgregarProducto(){
     const [contador, setContador] = useState(0); 
     useEffect (()=>{
-        Toastify({
+        // Toastify({
 
-            text: "Agregado a tu compra!",
+        //     text: "Agregado a tu compra!",
             
-            duration: 3000
+        //     duration: 3000
             
-            }).showToast();
+        //     }).showToast();
     },[contador])
 
     return(
-        <div className="agregarProducto">
+        <div className="agregarProducto" >
+            <button className="button" onClick={()=> setContador(contador-1)}>-</button>
             <p className="agregados">{contador}</p>
             <button id="comprar" className="button" onClick={()=> setContador(contador+1)}>+</button>
             
