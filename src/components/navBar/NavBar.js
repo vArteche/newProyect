@@ -2,7 +2,7 @@
 
 //componentes
 import NavBarItem from '../NavBarItem';
-// import logo from '.../assets/loguito.jpg';
+import logoNeca from './loguito.jpg'
 //estilos
 import "bulma/css/bulma.css";
 import './navBar.css';
@@ -13,7 +13,7 @@ function NavBar (){
         <>
             <div className='navbar-brand'>
                 <div className='navbar-start'>
-                    <img src={''} alt="logoNeca"></img>
+                    <img src={logoNeca} alt="logoNeca"></img>
                 </div>
                 <div>
                     <NavBarItem/>

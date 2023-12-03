@@ -16,7 +16,7 @@ function App(){
             <>
                 <NavBar/>
             </>
-            <div className="card-section">
+            <div>
                 <ItemListContainer/>
             </div>
         </>
