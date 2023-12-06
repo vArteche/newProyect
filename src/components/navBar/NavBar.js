@@ -1,4 +1,3 @@
-//pendientes en el archivo: resolver ruta del logo
 
 //componentes
 import NavBarItem from '../NavBarItem';
