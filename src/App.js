@@ -1,27 +1,29 @@
 //componentes
-import NavBar from "./components/navBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
-import Home from "./components/Home";
+import Layout from "./components/Layout";
 
-
+import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bulma/css/bulma.css";
+import Item from "./components/Item";
 
 
 
-function App(){
-    return(
-
-        <div>
-        <NavBar></NavBar>
+function App() {
+    return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home/>}></Route>
-                <Route exact path="/productos" element={<ItemListContainer/>}>PRODUCTOS</Route>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<ItemListContainer />} />
+                    <Route path="/productos/*" element={<ItemListContainer />} />
+                    <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+                    <Route path="*" element={<h1>ERROR 404 - NOT FOUND</h1>} />
+                </Route>
             </Routes>
         </BrowserRouter>
-
-        </div>
     );
-};
+}
+
+
+
 export default App;

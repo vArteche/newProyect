@@ -1,10 +1,10 @@
 
 //componentes
-import NavBarItem from '../NavBarItem';
 import logoNeca from './loguito.jpg'
 //estilos
 import "bulma/css/bulma.css";
 import './navBar.css';
+import { Link, NavLink } from 'react-router-dom';
 
 
 function NavBar (){
@@ -12,12 +12,25 @@ function NavBar (){
         <>
             <div className='navbar-brand'>
                 <div className='navbar-start'>
-                    <img src={logoNeca} alt="logoNeca"></img>
+                    <picture>
+                        <Link to="/">
+                            <img src={logoNeca} alt="logoNeca"></img>
+                        </Link>
+                    
+                    </picture>
+                </div>    
+                <div className='navbar-end'>
+                                        <nav>
+                        <NavLink to="/productos">TODOS LOS PRODUCTOS</NavLink>
+                        <NavLink to={'/categoria/terror'}>TERROR</NavLink>
+                        <NavLink to={'/categoria/oldToons'}>OLD TOONS</NavLink>
+                        <NavLink to={'/categoria/series'}>SERIES</NavLink>
+                        
+                    </nav>
                 </div>
-                <div>
-                    <NavBarItem/>
+
+                
                 </div>
-            </div>  
         </>
     );
 };

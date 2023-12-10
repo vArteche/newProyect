@@ -1,7 +1,7 @@
 
+import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount/ItemCount'
-
-function Item ({nombre, definicion,coleccion, img}){
+const Item = ({id, nombre, definicion,coleccion, img, stock}) =>{
     return(
         
         <div className="column is-4 producto">
@@ -9,12 +9,11 @@ function Item ({nombre, definicion,coleccion, img}){
                 <img src={img} alt="imagen producto"></img>
             </div>
             <div className="descripcion">
-                <span>
-                 {nombre} – {definicion} – {coleccion}
-                </span>
+                <p>{nombre}</p>
+                <Link to ={`/item/${id}`}>VER DETALLES</Link>
+                <p>Stock disponible: {stock}</p>
             </div>
             <div className="card-content">
-                <p></p>
                 <ItemCount/>
             </div>
         </div>
