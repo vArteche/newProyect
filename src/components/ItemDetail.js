@@ -16,6 +16,7 @@ const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, img }) 
                 <p>Acerca de: {descripcion}</p>
                 <p> Precio: ${Number(precio)}</p>
                 <ItemCount initial={1} stock={stock} />
+                
             </section>
         </article>
     );

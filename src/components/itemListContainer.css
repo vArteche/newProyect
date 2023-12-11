@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Nova+Square&family=Playfair+Display&display=swap');
 
 
-.card-section{
-    display: flex;
-}
 .producto{
     width: 100%;
     height: auto;
@@ -11,7 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 0;
+    row-gap: 1.875rem;
 }
 
 .descripcion{
@@ -23,4 +20,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+.descripcion{
+    display: flex;
+    flex-direction: column;
+
+}
+.masInfo{
+    background-color: red;
+    text-align: center;
 }

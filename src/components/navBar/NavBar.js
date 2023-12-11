@@ -19,7 +19,7 @@ function NavBar (){
                     
                     </picture>
                 </div>    
-                <div className='navbar-end'>
+                <div className='navbar-end navbar-menu'>
                                         <nav>
                         <NavLink to="/productos">TODOS LOS PRODUCTOS</NavLink>
                         <NavLink to={'/categoria/terror'}>TERROR</NavLink>
