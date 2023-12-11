@@ -1,6 +1,3 @@
-import lagoNess from '../assets/img/lagoness.jpg';
-import tortugas from '../assets/img/tortugas.webp';
-import homer from '../assets/img/homer.jpg';
 
 const productos = [
   {
@@ -8,7 +5,7 @@ const productos = [
     nombre: 'Ultimate Creature from the Black Lagoon (B&W)',
     descripcion: '7” Scale Action Figure Universal Monsters',
     categoria: 'terror',
-    Image: lagoNess,
+    Image: '/assets/img/lagoness.jpg',
     stock: 10,
     precio: 500
   },
@@ -17,7 +14,7 @@ const productos = [
     nombre: 'Toony Classics The Joker',
     descripcion: ' 6″ Scale Action Figure DC Comics (Classic)',
     categoria: 'oldToons',
-    Image: tortugas,
+    Image: '/assets/img/tortugas.webp',
     stock: 10,
     precio: 500
   },
@@ -26,7 +23,7 @@ const productos = [
     nombre: 'Splinter',
     descripcion: '7” Scale Action Figures Teenage Mutant Ninja Turtles (Mirage Comics)',
     categoria: 'series',
-    Image: homer,
+    Image: '/assets/img/homer.jpg',
     stock: 10,
     precio: 500
   },
@@ -42,18 +39,16 @@ export const obtenerItems = () => {
   });
 };
 
-export const obtenerItemId = (productoId) => {
+export const obtenerItemId = (itemId) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log('ID buscado:', productoId);
-            console.log('Lista de productos:', productos);
-
-            const productoEncontrado = productos.find(prod => prod.id === productoId);
+            const productoEncontrado = productos.find(prod => prod.id == itemId);
+            console.log(productoEncontrado)
 
             if (productoEncontrado) {
                 resolve(productoEncontrado);
             } else {
-                reject(new Error(`Producto con ID ${productoId} no encontrado`));
+                reject(new Error(`Producto con ID ${itemId} no encontrado`));
             }
         }, 300);
     });
@@ -62,8 +57,6 @@ export const obtenerItemId = (productoId) => {
 export const obtenerItemCat = (productoCat) => {
   return new Promise((resolve, reject) => {
       setTimeout(() => {
-          console.log('categoria buscada:', productoCat);
-          console.log('Lista de productos:', productos);
 
           const productoEncontrado = productos.filter(prod => prod.categoria === productoCat);
 

@@ -11,9 +11,10 @@ const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, img }) 
                 <img src={img} alt={`${nombre} - Imagen`} />
             </picture>
             <section>
-                <p>{categoria}</p>
-                <p>{descripcion}</p>
-                <p>${Number(precio)}</p>
+                <p>{id}</p>
+                <p>Categoría: {categoria}</p>
+                <p>Acerca de: {descripcion}</p>
+                <p> Precio: ${Number(precio)}</p>
                 <ItemCount initial={1} stock={stock} />
             </section>
         </article>
