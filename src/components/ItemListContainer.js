@@ -8,8 +8,9 @@ import { useParams } from "react-router-dom";
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
-    const [productoCat] = useParams();
+    const {productoCat} = useParams();
 
+    // filtrar por categoria
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -23,7 +24,7 @@ const ItemListContainer = () => {
         };
 
         fetchData();
-    }, []);
+    }, [productoCat]);
 
     if (cargando) {
         return <p>Cargando productos...</p>;
@@ -32,7 +33,7 @@ const ItemListContainer = () => {
     return (
         <div className="card-section">
             {productos.length > 0 ? (
-                <ItemLister productos={[productos]} />
+                <ItemLister productos={productos} />
             ) : (
                 <p>No se encontraron productos.</p>
             )}

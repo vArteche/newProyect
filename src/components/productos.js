@@ -65,7 +65,7 @@ export const obtenerItemCat = (productoCat) => {
           console.log('categoria buscada:', productoCat);
           console.log('Lista de productos:', productos);
 
-          const productoEncontrado = productos.find(prod => prod.categoria === productoCat);
+          const productoEncontrado = productos.filter(prod => prod.categoria === productoCat);
 
           if (productoEncontrado) {
               resolve(productoEncontrado);
