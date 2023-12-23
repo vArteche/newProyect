@@ -1,8 +1,8 @@
 import "bulma/css/bulma.css";
 import './itemListContainer.css';
 import { useState, useEffect } from "react";
-import { obtenerItemCat, obtenerItems } from './productos';
-import ItemLister from './ItemLister';
+import { obtenerItemCat, obtenerItems } from '../components/productos';
+import ItemLister from '../components/ItemLister';
 import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {

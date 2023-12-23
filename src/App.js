@@ -1,6 +1,6 @@
 //componentes
-import ItemListContainer from "./components/ItemListContainer";
-import Layout from "./components/Layout";
+import ItemListContainer from "./pages/ItemListContainer";
+import Layout from "./pages/Layout";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bulma/css/bulma.css";

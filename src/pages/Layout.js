@@ -1,7 +1,7 @@
 import ItemListContainer from "./ItemListContainer";
-import NavBar from "./navBar/NavBar";
+import NavBar from "../components/navBar/NavBar";
 import {Outlet} from "react-router-dom";
-import ItemDetailContainer from "./ItemDetailContainer";
+import ItemDetailContainer from "../components/ItemDetailContainer";
 
 function Layout(){
 
