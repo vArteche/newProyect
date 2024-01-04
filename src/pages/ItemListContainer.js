@@ -4,27 +4,39 @@ import { useState, useEffect } from "react";
 import { obtenerItemCat, obtenerItems } from '../components/productos';
 import ItemLister from '../components/ItemLister';
 import { useParams } from "react-router-dom";
+import {collection, getDocs, getFirestore, query, where} from "firebase/firestore";
+
 
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const {productoCat} = useParams();
 
-    // filtrar por categoria
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const productosObtenidos = productoCat ? await obtenerItemCat(productoCat) : await obtenerItems();
-                setProductos(productosObtenidos);
-            } catch (error) {
-                console.error('Error al obtener productos:', error);
-            } finally {
-                setCargando(false);
-            }
-        };
 
-        fetchData();
-    }, [productoCat]);
+    useEffect(()=>{
+        //conexion a base de datos
+        const db = getFirestore();
+        const productCollection = collection(db, "productos");
+        
+        getDocs(productCollection).then(snapshot =>{
+                setProductos(snapshot.docs.map(doc=>({id:doc.id, ...doc.data()})))
+                setCargando(false)
+            })
+        },[])
+        //filtrar x categoria
+        // useEffect(()=>{
+        //     const db = getFirestore();
+        //     const q = query(
+        //         collection(db, "productos"),
+        //         where("categoria", "===", {productoCat} )
+        //     );
+        //     getDocs(q).then((snapshot)=>{
+        //         if(snapshot.size === 0){
+        //             console.log("no results");
+        //         }
+        //         setProductos(snapshot.docs.map((doc)=>({id:doc.id, ...doc.data()})));
+        //     });
+        // },[])
 
     if (cargando) {
         return <p>Cargando productos...</p>;

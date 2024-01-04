@@ -11,7 +11,7 @@ const ItemLister = ({ productos }) => {
                     nombre={prod.nombre}
                     definicion={prod.descripcion}
                     coleccion={prod.categoria}
-                    img={prod.Image}
+                    img={prod.image}
                     stock={prod.stock}
                 />
             ))}

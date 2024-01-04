@@ -13,13 +13,13 @@ function App() {
     return (
         <BrowserRouter>
         <CartProvider>
-                        <Routes>
+            <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<ItemListContainer />} />
                     <Route path="/productos/*" element={<ItemListContainer />} />
                     <Route path="/productos/:itemId" element={<ItemDetailContainer />} />
                     <Route path="*" element={<h1>ERROR 404 - NOT FOUND</h1>} />
-                    <Route path="/categoria/:productoCat" element={<ItemListContainer />} />
+                    <Route path="productos/categoria/:productoCat" element={<ItemListContainer />} />
                     <Route path="/cart" element={<Cart/>}></Route>
                 </Route>
             </Routes>

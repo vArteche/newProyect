@@ -2,26 +2,24 @@ import React, { useEffect, useState } from "react";
 import { obtenerItemId, obtenerItems} from "./productos"; 
 import ItemDetail from './ItemDetail';
 import { useParams } from "react-router-dom";
+import {doc, getDoc, getFirestore} from "firebase/firestore"
 
 const ItemDetailContainer = () => {
     const [producto, setProducto] = useState(null);
     const [cargando, setCargando] = useState(true);
-    const {itemId} = useParams();
+    const {id} = useParams();
+
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const productosObtenidos = itemId ? await obtenerItemId(itemId) : await obtenerItems();
-                setProducto(productosObtenidos);
-            } catch (error) {
-                console.error('Error al obtener productos:', error);
-            } finally {
-                setCargando(false);
+        const db = getFirestore();
+        const product = doc(db, "productos", "Ho4AUepZtyiXVIrHmwcx")
+        getDoc(product).then(snapshot =>{
+            if(snapshot.exists()){
+                setProducto({id:snapshot.id, ...snapshot.data()})
+                setCargando(false)
             }
-        };
-
-        fetchData();
-    }, [itemId]);
+        })
+    },[]);
 
     if (cargando) {
         return <p>Cargando producto...</p>;

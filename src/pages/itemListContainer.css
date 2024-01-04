@@ -5,25 +5,29 @@
     width: 100%;
     height: auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     row-gap: 1.875rem;
+    flex-direction: row;
+    column-gap: 1.875rem ;
 }
 
 .descripcion{
-    font-size: medium;
     font-family: 'Nova Square';
+    width: 31.25rem;
 }
 .card-img{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    height: 18.75rem;
+    width: 12.5rem;
+    overflow: hidden;
 }
 .descripcion{
     display: flex;
     flex-direction: column;
+    text-align: center;
 
 }
 .masInfo{
