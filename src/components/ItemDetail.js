@@ -1,35 +1,47 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ItemCount from './ItemCount/ItemCount';
 import { CartContext } from '../context/CartContext';
+import { ProductContext } from '../context/ProductContext';
 
 const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, img }) => {
-    const [quantityAdded, setQuantityAdded] = useState(0);
+    const { addItem } = useContext(CartContext);
+    const { getProductById } = useContext(ProductContext);
+    const [product, setProduct] = useState(null);
 
-    const {addItem} = useContext(CartContext)
+    useEffect(() => {
+        // Aquí deberías llamar a la función del contexto para obtener el producto por ID
+        const productData = getProductById(id);
+        setProduct(productData);
+    }, [getProductById, id]);
 
-    const handleOnAdd =(cuantity) => {
-        setQuantityAdded(cuantity)
-        const item= {
-            id, nombre, precio
-        }
-        addItem(item,cuantity)
+    const handleOnAdd = (quantity) => {
+        const item = {
+            id,
+            nombre,
+            precio
+        };
+        addItem(item, quantity);
+    };
+
+    if (!product) {
+        return <p>Cargando producto...</p>;
     }
+
     return (
-        <article>
+        <article className="item-detail">
             <header className='header'>
-                <h2>{nombre}</h2>
+                <h2>{product.nombre}</h2>
             </header>
             <picture>
-                <img src={img} alt={`${nombre} - Imagen`} />
+                <img src={product.img} alt={`${product.nombre} - Imagen`} />
             </picture>
             <section>
-                <p>{id}</p>
-                <p>Categoría: {categoria}</p>
-                <p>Acerca de: {descripcion}</p>
-                <p> Precio: ${Number(precio)}</p>
-                <ItemCount initial={1} stock={stock} />
-                <button onClick={handleOnAdd}>Agregar al carrito</button>
-                
+                <p>{product.id}</p>
+                <p>Categoría: {product.categoria}</p>
+                <p>Acerca de: {product.descripcion}</p>
+                <p>Precio: ${Number(product.precio)}</p>
+                <ItemCount stock={product.stock} onAdd={handleOnAdd} />
+                <button onClick={() => handleOnAdd(1)}>Agregar al carrito</button>
             </section>
         </article>
     );

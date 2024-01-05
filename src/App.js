@@ -6,13 +6,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bulma/css/bulma.css";
 import { CartProvider } from "./context/CartContext";
 import Cart from "./components/Cart";
-
+import { ProductProvider } from "./context/ProductContext";
 
 
 function App() {
     return (
         <BrowserRouter>
-        <CartProvider>
+        <ProductProvider>
+                    <CartProvider>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<ItemListContainer />} />
@@ -24,6 +25,8 @@ function App() {
                 </Route>
             </Routes>
         </CartProvider>
+        </ProductProvider>
+
 
         </BrowserRouter>
     );
