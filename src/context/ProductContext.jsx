@@ -48,8 +48,8 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProductById = (productId) => {
-    return products.find((product) => product.id === productId) || null;
-  };
+    return products.find((product) => product.id == productId) || null;
+};
 
   return (
     <ProductContext.Provider

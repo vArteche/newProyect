@@ -1,36 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { obtenerItemId, obtenerItems} from "./productos"; 
-import ItemDetail from './ItemDetail';
+import React, { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
+import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import {doc, getDoc, getFirestore} from "firebase/firestore"
 
 const ItemDetailContainer = () => {
-    const [producto, setProducto] = useState(null);
-    const [cargando, setCargando] = useState(true);
-    const {id} = useParams();
+  const { productId } = useParams();
+console.log("productId:",productId)
+  const { getProductById, loading, error } = useContext(ProductContext);
+console.log("loading:", loading)
+console.log("error:", error)
+  const producto = getProductById(productId);
 
+  if (loading) {
+    return <p>Cargando producto...</p>;
+  }
 
-    useEffect(() => {
-        const db = getFirestore();
-        const product = doc(db, "productos", "Ho4AUepZtyiXVIrHmwcx")
-        getDoc(product).then(snapshot =>{
-            if(snapshot.exists()){
-                setProducto({id:snapshot.id, ...snapshot.data()})
-                setCargando(false)
-            }
-        })
-    },[]);
+  if (!producto) {
+    return <p>No se encontró el producto.</p>;
+  }
 
-    if (cargando) {
-        return <p>Cargando producto...</p>;
-    }
-
-    
-    return (
-        <div className="ItemDetail">
-            {producto && <ItemDetail {...producto} />}
-        </div>
-    );
-}
+  return (
+    <div className="ItemDetail">
+      <ItemDetail
+        id={producto.id}
+        nombre={producto.nombre}
+        categoria={producto.categoria}
+        descripcion={producto.descripcion}
+        precio={producto.precio}
+        stock={producto.stock}
+        img={producto.img}
+      />
+    </div>
+  );
+};
 
 export default ItemDetailContainer;
