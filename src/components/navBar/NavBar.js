@@ -1,13 +1,16 @@
 
-//componentes
 import logoNeca from './loguito.jpg'
-//estilos
+import Cart from '../Cart/Cart';
 import "bulma/css/bulma.css";
 import './navBar.css';
 import { Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
+import {BsFillBagHeartFill} from 'react-icons/bs';
 
 
 function NavBar (){
+    const {totalQuantity} = useContext(CartContext)
     return(
         <>
             <div className='navbar-brand'>
@@ -20,11 +23,16 @@ function NavBar (){
                     </picture>
                 </div>    
                 <div className='navbar-end navbar-menu'>
-                                        <nav>
+                    <nav>
                         <NavLink to="/productos">TODOS LOS PRODUCTOS</NavLink>
                         <NavLink to={'/categoria/terror'}>TERROR</NavLink>
                         <NavLink to={'/categoria/oldToons'}>OLD TOONS</NavLink>
                         <NavLink to={'/categoria/series'}>SERIES</NavLink>
+                        <NavLink to={'/cart'}>            
+                            <BsFillBagHeartFill>
+                                {totalQuantity}
+                            </BsFillBagHeartFill>
+                        </NavLink>
                         
                     </nav>
                 </div>

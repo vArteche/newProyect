@@ -4,29 +4,27 @@ import { CartContext } from '../context/CartContext';
 import { ProductContext } from '../context/ProductContext';
 
 const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, img }) => {
-    const { addItem } = useContext(CartContext);
+    const { addItem, quantityAdded } = useContext(CartContext);
     const { getProductById } = useContext(ProductContext);
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
-        // Aquí deberías llamar a la función del contexto para obtener el producto por ID
         const productData = getProductById(id);
         setProduct(productData);
     }, [getProductById, id]);
 
-    const handleOnAdd = (quantity) => {
+    const handleOnAdd = (quantityAdded) => {
         const item = {
             id,
             nombre,
             precio
         };
-        addItem(item, quantity);
+        addItem(item, quantityAdded);
     };
 
     if (!product) {
         return <p>Cargando producto...</p>;
     }
-
     return (
         <article className="item-detail">
             <header className='header'>
@@ -40,8 +38,9 @@ const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, img }) 
                 <p>Categoría: {product.categoria}</p>
                 <p>Acerca de: {product.descripcion}</p>
                 <p>Precio: ${Number(product.precio)}</p>
-                <ItemCount stock={product.stock} onAdd={handleOnAdd} />
-                <button onClick={() => handleOnAdd(1)}>Agregar al carrito</button>
+                <ItemCount stock={product.stock} onAdd={handleOnAdd} value={quantityAdded} />
+                <button onClick={() => handleOnAdd(quantityAdded)} disabled={product.stock === 0}>Agregar al carrito</button>
+
             </section>
         </article>
     );

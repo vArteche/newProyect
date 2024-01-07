@@ -5,8 +5,9 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bulma/css/bulma.css";
 import { CartProvider } from "./context/CartContext";
-import Cart from "./components/Cart";
+import Cart from "./components/Cart/Cart";
 import { ProductProvider } from "./context/ProductContext";
+import CartWidget from "./components/Cart/CartWidget";
 
 
 function App() {
