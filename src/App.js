@@ -7,14 +7,14 @@ import "bulma/css/bulma.css";
 import { CartProvider } from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
 import { ProductProvider } from "./context/ProductContext";
-import CartWidget from "./components/Cart/CartWidget";
-
+import Checkout from "./components/CheckOut";
+import OrderConfirmation from "./pages/OrderConfirm";
 
 function App() {
     return (
         <BrowserRouter>
         <ProductProvider>
-                    <CartProvider>
+        <CartProvider>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<ItemListContainer />} />
@@ -23,12 +23,12 @@ function App() {
                     <Route path="*" element={<h1>ERROR 404 - NOT FOUND</h1>} />
                     <Route path="productos/categoria/:productoCat" element={<ItemListContainer />} />
                     <Route path="/cart" element={<Cart/>}></Route>
+                    <Route path="checkout" element={<Checkout/>}></Route>
+                    <Route path="/order-confirmation" element={<OrderConfirmation/>} />
                 </Route>
             </Routes>
         </CartProvider>
         </ProductProvider>
-
-
         </BrowserRouter>
     );
 }

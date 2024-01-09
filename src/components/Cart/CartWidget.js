@@ -1,15 +1,16 @@
-//librerias
-import { useContext } from 'react';
+
+import React, { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
-import { Link } from 'react-router-dom/dist';
 
-function CartWidget(){
+const CartWidget = () => {
+  const { getTotalItems } = useContext(CartContext);
 
-    return(
-        <div className='soyyo'>
+  return (
+    <div className="cart-widget">
+      {/* Otros elementos del carrito */}      
+      <span>{getTotalItems()}</span>
+    </div>
+  );
+};
 
-        </div>
-
-    )
-;}
 export default CartWidget;

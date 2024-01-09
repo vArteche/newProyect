@@ -1,26 +1,35 @@
-import { useState , useEffect } from "react";
-import'./itemCount.css';
+import React, { useState } from 'react';
+import './itemCount.css';
 
-function AgregarProducto(){
-    const [contador, setContador] = useState(0); 
-    useEffect (()=>{
-        // Toastify({
+const ItemCount = ({ stock, onAdd, value }) => {
+  const [quantity, setQuantity] = useState(value);
 
-        //     text: "Agregado a tu compra!",
-            
-        //     duration: 3000
-            
-        //     }).showToast();
-    },[contador])
+  const handleIncrement = () => {
+    if (quantity < stock) {
+      setQuantity((prevQuantity) => prevQuantity + 1);
+      onAdd(quantity + 1);
+    }
+  };
 
-    return(
-        <div className="agregarProducto" >
-            <button className="button" onClick={()=> setContador(contador-1)}>-</button>
-            <p className="agregados">{contador}</p>
-            <button id="comprar" className="button" onClick={()=> setContador(contador+1)}>+</button>
-            
-        </div>
-    )
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+      onAdd(quantity - 1);
+    }
+  };
+
+  return (
+    <div className="item-count">
+      <button className="button" onClick={handleDecrement}>
+        -
+      </button>
+      <p className="quantity">{quantity}</p>
+      <button className="button" onClick={handleIncrement}>
+        +
+      </button>
+    </div>
+  );
 };
 
-export default AgregarProducto;
+export default ItemCount;
+
