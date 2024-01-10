@@ -6,10 +6,10 @@ const Item = ({id, nombre, img, stock}) =>{
         
         <div className=" container">
             <div className='row producto'>
-                <div className="col-6 card-img text-end">
+                <div className="col-6 card-img">
                     <img src={img} alt="imagen producto" className='img-fluid'></img>
                 </div>
-                <div className="col-6 descripcion text-start">
+                <div className="col-6 descripcion">
                     <p>{nombre}</p>
                     <Link to ={`/productos/${id}`} className='masInfo'>VER DETALLES</Link>
                     <p>Stock disponible: {stock}</p>

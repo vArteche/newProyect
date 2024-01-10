@@ -44,11 +44,11 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProductsByCategory = (productoCat) => {
-    return products.filter((product) => product.categoria == productoCat);
+    return products.filter((product) => product.categoria === productoCat);
   };
 
   const getProductById = (productId) => {
-    return products.find((product) => product.id == productId) || null;
+    return products.find((product) => product.id === productId) || null;
 };
 
   return (

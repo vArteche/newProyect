@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Nova+Square&family=Playfair+Display&display=swap');
+
+
+.cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nova Square';
+
+}
+.btn{
+    padding: .625rem;
+    background-color: red;
+    font-family: 'Nova Square';
+    font-weight: 300;
+    border-style: none;
+    border-radius: .625rem;
+}
+
+.cart-item{
+    display: flex;
+}

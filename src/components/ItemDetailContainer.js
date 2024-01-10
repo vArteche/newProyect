@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import './itemDetail.css'
 
 const ItemDetailContainer = () => {
   const { productId } = useParams();

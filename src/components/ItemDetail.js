@@ -33,19 +33,21 @@ const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, Image }
             <header className='header'>
                 <h2>{product.nombre}</h2>
             </header>
-            <picture>
-                {product && <img src={product.image} alt={`${product.nombre} - Imagen`} width="250px" />}
-            </picture>
+            <div className='descripcion'>
+                {product && <img className='imgDetail' src={product.image} alt={`${product.nombre} - Imagen`} />}
 
-            <section>
+
+            <section className='textDescription'>
                 <p>Categoría: {product.categoria}</p>
                 <p>Acerca de: {product.descripcion}</p>
                 <p>Precio: ${Number(product.precio)}</p>
                 <ItemCount stock={product.stock} onAdd={setQuantity} value={quantity} />
-                <button onClick={() => handleOnAdd()} disabled={product.stock === 0}>
+                <button onClick={() => handleOnAdd()} disabled={product.stock === 0} className='addtocart'>
                     Agregar al carrito
                 </button>
             </section>
+            </div>
+            
         </article>
     );
 };
