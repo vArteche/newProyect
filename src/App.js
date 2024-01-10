@@ -20,8 +20,8 @@ function App() {
                     <Route index element={<ItemListContainer />} />
                     <Route path="/productos/*" element={<ItemListContainer />} />
                     <Route path="/productos/:productId" element={<ItemDetailContainer />} />
-                    <Route path="*" element={<h1>ERROR 404 - NOT FOUND</h1>} />
-                    <Route path="productos/categoria/:productoCat" element={<ItemListContainer />} />
+                    {/* <Route path="*" element={<h1>ERROR 404 - NOT FOUND</h1>} /> */}
+                    <Route path="/categoria/:categoria" element={<ItemListContainer />} />
                     <Route path="/cart" element={<Cart/>}></Route>
                     <Route path="checkout" element={<Checkout/>}></Route>
                     <Route path="/order-confirmation" element={<OrderConfirmation/>} />

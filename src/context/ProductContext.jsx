@@ -43,8 +43,8 @@ export const ProductProvider = ({ children }) => {
     return products;
   };
 
-  const getProductsByCategory = (category) => {
-    return products.filter((product) => product.categoria === category);
+  const getProductsByCategory = (productoCat) => {
+    return products.filter((product) => product.categoria == productoCat);
   };
 
   const getProductById = (productId) => {

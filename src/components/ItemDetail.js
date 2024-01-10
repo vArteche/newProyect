@@ -3,7 +3,7 @@ import ItemCount from './ItemCount/ItemCount';
 import { CartContext } from '../context/CartContext';
 import { ProductContext } from '../context/ProductContext';
 
-const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, img }) => {
+const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, Image }) => {
     const { addItem } = useContext(CartContext);
     const { getProductById } = useContext(ProductContext);
     const [product, setProduct] = useState(null);
@@ -18,7 +18,8 @@ const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, img }) 
         const item = {
             id,
             nombre,
-            precio
+            precio,
+            Image
         };
         addItem(item, quantity);
     };
@@ -33,10 +34,10 @@ const ItemDetail = ({ id, nombre, categoria, descripcion, precio, stock, img }) 
                 <h2>{product.nombre}</h2>
             </header>
             <picture>
-                <img src={product.img} alt={`${product.nombre} - Imagen`} />
+                {product && <img src={product.image} alt={`${product.nombre} - Imagen`} width="250px" />}
             </picture>
+
             <section>
-                <p>{product.id}</p>
                 <p>Categoría: {product.categoria}</p>
                 <p>Acerca de: {product.descripcion}</p>
                 <p>Precio: ${Number(product.precio)}</p>
